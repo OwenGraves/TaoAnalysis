@@ -30,7 +30,7 @@ begin
         exact funext this
 end
 
-theorem ax3_2 (A : set α) : (∀ x : α, x ∉ A) → A = ∅ :=  
+theorem ax3_2 {A : set α} : (∀ x : α, x ∉ A) → A = ∅ :=  
 begin
     assume h,
     apply iff.mpr d3_1_4,
@@ -43,5 +43,13 @@ begin
     exact false.elim xe
 end
 
+lemma l3_1_6 {A : set α} (h : A ≠ ∅) : ∃ x, x ∈ A :=
+begin
+    apply by_contradiction,
+    assume nh,
+    have : ∀ x, x ∉ A, from forall_not_of_not_exists nh,
+    have : A = ∅, from ax3_2 this,
+    contradiction
+end
 
 end chapter3
