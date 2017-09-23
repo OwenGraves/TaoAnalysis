@@ -52,4 +52,16 @@ begin
     contradiction
 end
 
+theorem ax3_3 {y : α} {a : α} : y ∈ ({a} : set α) ↔ y = a :=
+begin
+    constructor,
+    assume ye,
+        apply or.elim ye,
+        exact id,
+        assume (h : set.mem y ∅),
+        exact false.elim h,
+    assume ye,
+        exact or.inl ye
+end
+
 end chapter3
