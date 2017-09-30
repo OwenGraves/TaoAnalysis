@@ -83,4 +83,17 @@ begin
         exact or.inl yb
 end
 
+theorem ax3_4 {A B : set α} : ∀ x : α, x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B :=
+begin
+    intro x,
+    constructor,
+    exact id,
+    exact id,
+end
+
+example : {1, 2} ∪ {2, 3} = ({1, 2, 3} : set ℕ) :=
+--calc
+--    {1, 2} ∪ {2, 3} = {x | x ∈ {1, 2} ∨ x ∈ {2, 3}} : rfl
+--    ...             = 
+
 end chapter3
