@@ -17,6 +17,7 @@ def d3_1_1 := α → Prop
 -- sets are objects
 theorem ax3_1 (A : set α) (B : set (set α)) : Prop := A ∈ B
 
+-- should be the axiom of extensionality
 def d3_1_4 {A B : set α} : A = B ↔ (∀ x : α, x ∈ A ↔ x ∈ B) :=
 begin
     constructor,
@@ -52,7 +53,8 @@ begin
     contradiction
 end
 
-theorem ax3_3 {y : α} {a : α} : y ∈ ({a} : set α) ↔ y = a :=
+-- singleton set
+theorem ax3_3a {y : α} {a : α} : y ∈ (singleton a : set α) ↔ y = a :=
 begin
     constructor,
     intro ye,
@@ -62,6 +64,23 @@ begin
         exact false.elim h,
     intro ye,
         exact or.inl ye
+end
+
+-- pair set
+theorem ax3_3b {y : α} {a : α} {b : α} : y ∈ (insert b (singleton a) : set α) ↔ y = a ∨ y = b :=
+begin
+    constructor,
+    intro ye,
+        apply or.elim ye,
+        exact or.inr,
+        intro ya,
+        exact or.inl (ax3_3a.mp ya),
+    intro ye,
+        apply or.elim ye,
+        intro ya,
+        exact or.inr (ax3_3a.mpr ya),
+        intro yb,
+        exact or.inl yb
 end
 
 end chapter3
