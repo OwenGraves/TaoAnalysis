@@ -19,6 +19,8 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
  
 \begin{document}
 
@@ -89,6 +91,44 @@
 	From Axiom 3.4 this means that $ x \in A $ or $ x \in \emptyset $.
 	If $ x \in A $, then clearly $ x \in A $.
 	If $ x \in \emptyset $, then from Axiom 3.2 we have a falsehood and so $ x \in A $ is vacuously implied.
+\end{proof}
+
+\begin{proposition}{3.1.18a}
+	Given sets $ A, B, C $, if $ A \subseteq B $ and $ B \subseteq C $ then $ A \subseteq C $.
+\end{proposition}
+\begin{proof}
+	We need to show that if $ x \in A $ then also $ x \in C $.
+	Suppose $ A \subseteq B $ and $ B \subseteq C $ and let $ x $ be an element in $ A $.
+	From $ A \subseteq B $ we know that $ x \in B $.
+	Since $ x \in B $ we know that $ x \in C $ from $ B \subseteq C $.
+\end{proof}
+
+\begin{proposition}{3.1.18b}
+	Given sets $ A $ and $ B $, if $ A \subseteq B $ and $ B \subseteq A $ then $ A = B $.
+\end{proposition}
+\begin{proof}
+	To prove $ A = B $ we must show that $ x \in A $ if and only if $ x \in B $.
+	Suppose $ A \subseteq B $ and $ B \subseteq A $.
+	From the definition of $ A \subseteq B $, we have $ x \in A $ implies $ x \in B $.
+	Similarly, from the definition of $ B \subseteq A $, we have $ x \in B $ implies $ x \in A $.
+	These two implications together allow the introduction of the biconditional $ x \in A $ if and only if $ x \in B $, thus completing the proof.
+\end{proof}
+
+\begin{proposition}{3.1.18c}
+	Given sets $ A, B, C $, if $ A \subsetneq B $ and $ B \subsetneq C $ then $ A \subsetneq C $.
+\end{proposition}
+\begin{proof}
+	We need to show that if $ x \in A $ then also $ x \in C $ and also that $ A \neq C $.
+	Suppose $ A \subsetneq B $ and $ B \subsetneq C $ and let $ x $ be an element in $ A $.
+	From $ A \subsetneq B $ we know that $ x \in B $.
+	Since $ x \in B $ we know that $ x \in C $ from $ B \subsetneq C $.
+	Thus we have shown that $ A \subseteq C $.
+	To prove $ A \neq C $, we assume $ A = C $ and derive a contradiction.
+	We have $ A \subseteq B $ from our assumption $ A \subsetneq B $.
+	Since we assumed $ A = C $, we have $ B \subsetneq A $ and consequently $ B \subseteq A $.
+	Since $ A \subseteq B $ and $ B \subseteq A $, we have $ A = B $ from Proposition 3.1.18b.
+	However, this contradicts our previous assumption that $ A \neq B $, and so A must not equal C.
+	Since we have shown that $ A \subseteq C $ and $ A \neq C $, we have proven that $ A \subsetneq C $.
 \end{proof}
 
 \end{document}
