@@ -28,19 +28,67 @@
  
 \maketitle
  
-\begin{theorem}{}
-
-\end{theorem}
- 
+\begin{lemma}{3.1.13a}
+	If $ a $ and $ b $ are objects, then $ \{a, b\} = \{a\} \cup \{b\} $.
+\end{lemma}
 \begin{proof}
+	To prove the two sets are equal we must show that every element $ y $ of $ \{a, b\} $ is also an element of $ \{a\} \cup \{b\} $ and vice versa.
+	From the definition of pair sets, $ y \in \{a, b\} $ if and only if $ y = a $ or $ y = b $.
+	So first consider the case where $ y = a $, which implies that $ y \in \{a\} $ from the definition of a singleton set.
+	From Axiom 3.4, we then have $ y \in \{a\} \cup \{b\} $.
+	Now consider the case where $ y = b $, which implies that $ y \in \{b\} $ from the definition of a singleton set.
+	Then again from Axiom 3.4, we have $ y \in \{a\} \cup \{b\} $.
+	We now need to show that for every element $ y \in \{a\} \cup \{b\} $ we have $ y \in \{a, b\} $.
+	From Axiom 3.4, we have $ y \in \{a\} \cup \{b\} $ if and only if $ y \in \{a\} $ or $ y \in \{b\} $.
+	So first consider the case where $ y \in \{a\} $, which implies that $ y = a $ from the definition of a singleton set.
+	Then we have $ y = a $ or $ y = b $ which is the definition of a pair set and so $ y \in \{a, b\} $.
+	For the case where $ y \in \{b\} $, we also have $ y = b $.
+	This entails that $ y = a $ or $ y = b $, which implies that $ y \in \{a, b\} $.
+\end{proof}
 
-\begin{align*}
-\sum_{i=1}^{k+1}i & = \left(\sum_{i=1}^{k}i\right) +(k+1)\\ 
-& = \frac{k(k+1)}{2}+k+1 & (\text{by inductive hypothesis})\\
-& = \frac{k(k+1)+2(k+1)}{2}\\
-& = \frac{(k+1)(k+2)}{2}\\
-& = \frac{(k+1)((k+1)+1)}{2}.
-\end{align*}
+\begin{lemma}{3.1.13b}
+	The union operation is commutative, i.e, $ A \cup B = B \cup A $.
+\end{lemma}
+\begin{proof}
+	From the definition of set equality, we must show that every element $ x $ of $ A \cup B $ is also an element of $ B \cup A $ and vice versa.
+	Suppose that $ x \in A \cup B $.
+	By Axiom 3.4, this means that either $ x \in A $ or $ x \in B $, which can be rewritten as $ x \in B $ or $ x \in A $.
+	By Axiom 3.4 again, this is equivalent to $ x \in B \cup A $.
+	We must now show for every element $ x \in B \cup A $ that $ x \in A \cup B $ also holds.
+	So suppose $ x \in B \cup A $.
+	Then we know that $ x \in B $ or $ x \in A $, and so $ x \in A \cup B $ as desired.
+\end{proof}
+
+\begin{lemma}{3.1.13c}
+	The union operation is associative, i.e, $ (A \cup B) \cup C = A \cup (B \cup C) $.
+\end{lemma}
+\begin{proof}
+	We must show that every element $ x $ of $ (A \cup B) \cup C $ is also an element of $ A \cup (B \cup C) $ and vice versa.
+	So suppose that $ x $ is an element of $ (A \cup B) \cup C $.
+	By Axiom 3.4 this means that either $ x \in A \cup B $ or $ x \in C $ is true.
+	We now divide into cases.
+	If $ x \in C $ then also $ x \in B \cup C $ by Axiom 3.4, and again using Axiom 3.4, $ x \in A \cup (B \cup C) $.
+	Now suppose instead $ x \in A \cup B $, then by Axiom 3.4, either $ x \in A $ or $ x \in B $ and divide into cases again.
+	If $ x \in A $, then $ x \in A \cup (B \cup C) $, by Axiom 3.4.
+	If $ x \in B $, then $ x \in B \cup C $, by Axiom 3.4, and hence also by Axiom 3.4, $ x \in A \cup (B \cup C) $.
+	Thus in all cases we have shown that every element of $ (A \cup B) \cup C $ is also an element of $ A \cup (B \cup C) $.
+	A similar argument shows that every element of $ A \cup (B \cup C) $ lies in $ (A \cup B) \cup C $, and so $ (A \cup B) \cup C = A \cup (B \cup C) $ as desired.
+\end{proof}
+
+\begin{lemma}{3.1.13d}
+	$ A \cup A = A \cup \emptyset = A $
+\end{lemma}
+\begin{proof}
+	We first prove $ A \cup A = A $ by showing each set is a subset of the other.
+	Let $ x $ be an element of $ A \cup A $.
+	Then from Axiom 3.4 we have $ x \in A $ or $ x \in A $, and in both cases $ x \in A $ as desired.
+	Now consider $ x \in A $, then we have $ x \in A $ or $ x \in A $.
+	Then by Axiom 3.4, we have $ x \in A \cup A $ which completes this proof.
+	We now prove that $ A \cup \emptyset = A $.
+	Let $ x $ be an element of $ A \cup \emptyset $.
+	From Axiom 3.4 this means that $ x \in A $ or $ x \in \emptyset $.
+	If $ x \in A $, then clearly $ x \in A $.
+	If $ x \in \emptyset $, then from Axiom 3.2 we have a falsehood and so $ x \in A $ is vacuously implied.
 \end{proof}
 
 \end{document}
