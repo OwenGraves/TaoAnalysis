@@ -86,6 +86,7 @@
 	Then from Axiom 3.4 we have $ x \in A $ or $ x \in A $, and in both cases $ x \in A $ as desired.
 	Now consider $ x \in A $, then we have $ x \in A $ or $ x \in A $.
 	Then by Axiom 3.4, we have $ x \in A \cup A $ which completes this proof.
+	
 	We now prove that $ A \cup \emptyset = A $.
 	Let $ x $ be an element of $ A \cup \emptyset $.
 	From Axiom 3.4 this means that $ x \in A $ or $ x \in \emptyset $.
@@ -129,6 +130,52 @@
 	Since $ A \subseteq B $ and $ B \subseteq A $, we have $ A = B $ from Proposition 3.1.18b.
 	However, this contradicts our previous assumption that $ A \neq B $, and so A must not equal C.
 	Since we have shown that $ A \subseteq C $ and $ A \neq C $, we have proven that $ A \subsetneq C $.
+\end{proof}
+
+\begin{proposition}{3.1.28a}
+	$ A \cup \emptyset = A $ and $ A \cap \emptyset = \emptyset $.
+\end{proposition}
+\begin{proof}
+	The first equality follows from Lemma 3.1.13d.
+	
+	To prove the second equality we must show that every element of $ A \cap \emptyset $ is an element of $ \emptyset $ and vice versa.
+	Consider $ x \in A \cap \emptyset $, then by the definition of set intersection, we also have $ x \in \emptyset $.
+	Now consider $ x \in \emptyset $, but we also know that $ x \notin \emptyset $ from Axiom 3.2, which, from the principle of explosion, implies $ x \in A \cap \emptyset $.
+\end{proof}
+
+\begin{proposition}{3.1.28b}
+	Consider a set $ X $ containing $ A $ as a subset.
+	Then $ A \cup X = X $ and $ A \cap X = A $.
+\end{proposition}
+\begin{proof}
+	We prove the first equality by showing $ A \cup X \subseteq X $ and $ A \cup X \supseteq X $.
+	Consider $ x \in A \cup X $, then there are two cases.
+	If $ x \in A $, then we also have $ x \in X $ since $ A \subseteq X $.
+	In either case $ x \in X $ which shows that $ A \cup X \subseteq X $.
+	Now consider $ x \in X $, then from disjunction introduction we have $ x \in A \cup X $.
+	We have shown both subset inclusions and thus set equality.
+	
+	For the second equality we must show $ A \cap X \subseteq A $ and $ A \cap X \supseteq A $.
+	Consider $ x \in A \cap X $, then from the definition of set intersection we have $ x \in A $.
+	Now consider $ x \in A $, but then since $ A \subseteq X $, we have both $ x \in A $ and $ x \in X $ and thus $ x \in A \cap X $.
+\end{proof}
+
+\begin{proposition}{3.1.28c}
+	$ A \cap A = A $ and $ A \cup A = A $.
+\end{proposition}
+\begin{proof}
+	We prove the first equality by showing $ A \cap A \subseteq A $ and $ A \cap A \supseteq A $.
+	Let $ x \in A \cap A $, then also $ x \in A $.
+	Let $ x \in A $, then $ x \in A $ and $ x \in A $ so $ x \in A \cap A $.
+	
+	$ x \in A \cup A \iff x \in A \lor x \in A \iff x \in A $.
+\end{proof}
+
+\begin{proposition}{3.1.28d}
+	$ A \cup B = B \cup A $ and $ A \cap B = B \cap A $
+\end{proposition}
+\begin{proof}
+	
 \end{proof}
 
 \end{document}
