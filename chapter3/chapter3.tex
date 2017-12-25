@@ -175,7 +175,70 @@
 	$ A \cup B = B \cup A $ and $ A \cap B = B \cap A $
 \end{proposition}
 \begin{proof}
+	The first equality is shown by Lemma 3.1.13b.
 	
+	$ x \in A \cap B \iff x \in A \text{ and } x \in B \iff x \in B \text{ and } x \in A \iff x \in B \cap A $.
+\end{proof}
+
+\begin{proposition}{3.1.28e}
+	$ (A \cup B) \cup C = A \cup (B \cup C) $ and $ (A \cap B) \cap C = A \cap (B \cap C) $.
+\end{proposition}
+\begin{proof}
+	The first equality is shown by Lemma 3.1.13c.
+	
+	The second equality is shown in a similar manner using the associativity of conjunction instead of the associativity of disjunction.
+\end{proof}
+
+\begin{proposition}{3.1.28f}
+	$ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \text{ and } A \cup (B \cap C) = (A \cup B) \cap (A \cup C) $.
+\end{proposition}
+\begin{proof}
+	$ x \in A \cap (B \cup C) \iff x \in A \land x \in B \cup C \iff x \in A \land (x \in B \lor x \in C) $.
+	There are two cases.
+	If $ x \in B $, then $ x \in A \land x \in B $ so $ x \in A \cap B $ which implies that $ x \in (A \cap B) \cup (A \cap C) $.
+	If $ x \in C $, then by similar logic $ x \in (A \cap B) \cup (A \cap C) $.
+	So we have shown $ A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C) $.
+	Now if $ x \in (A \cap B) \cup (A \cap C) $, then either $ x \in A \cap B $ or $ x \in A \cap C $.
+	For the first case, we have $ x \in A $ and $ x \in B $, so also $ x \in B \cup C $, which implies $ x \in A \cap (B \cup C) $.
+	Similar reasoning applies for the second case where $ x \in A $ and $ x \in C $.
+	
+	A similar argument can prove the second equality.
+\end{proof}
+
+\begin{proposition}{3.1.28g}
+	Consider a set $ X $, where $ A \subseteq X $.
+	Then $ A \cup (X \setminus A) = X $ and $ A \cap (X \setminus A) = \emptyset $.
+\end{proposition}
+\begin{proof}
+	Consider an $ x \in A \cup (X \setminus A) $, then there are two cases.
+	If $ x \in A $ then also $ x \in X $.
+	If $ x \in (X \setminus A) $, then also $ x \in X $ from the definition of set difference.
+	Now consider an $ x \in X $, then we have either $ x \in A $ or $ x \notin A $.
+	If $ x \in A $, then clearly $ x \in A \cup (X \setminus A) $.
+	If $ x \notin A $, then from the definition of set difference $ x \in X \setminus A $ so also $ x \in A \cup (X \setminus A) $.
+	
+	Consider an $ x \in A \cap (X \setminus A) $.
+	Then $ x \in A $ and $ x \in X \setminus A $, which also implies $ x \notin A $.
+	However, $ x \in A $ and $ x \notin A $ is a contradiction and so $ x \in \emptyset $ follows.
+	Now consider an $ x \in \emptyset $, but again since $ \forall x, x \notin \emptyset $, we also have $ x \notin \emptyset $, and as such anything follows, so $ x \in A \cap (X \setminus A) $.
+\end{proof}
+
+
+\begin{proposition}{3.1.28h}
+	Consider a set $ X $, where $ A \subseteq X $.
+	$ X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) $ and $ X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B) $.
+\end{proposition}
+\begin{proof}
+	Let $ x \in X \setminus (A \cup B) $.
+	As a result we know that $ x \in X $ and $ x \notin A \cup B $.
+	From De Morgan's law we know that $ x \notin A $ and $ x \notin B $.
+	And as a result we know that $ x \in X \setminus A $ and $ x \in X \setminus B $.
+	Now let $ x \in (X \setminus A) \cap (X \setminus B) $.
+	As a result we know that $ x \in X $ and $ x \notin A $ and $ x \notin B $.
+	From De Morgan's law we have $ \lnot (x \in A \lor x \in B) $ so $ x \notin (A \cup B) $.
+	So $ x \in X \setminus (A \cup B) $.
+	
+	The other equality follows in a similar fashion.
 \end{proof}
 
 \end{document}
