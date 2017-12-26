@@ -241,4 +241,51 @@
 	The other equality follows in a similar fashion.
 \end{proof}
 
+\begin{exercise}{3.1.2}
+	$ \emptyset \neq \{ \emptyset \} $, $ \{ \emptyset \} \neq \{ \{ \emptyset \} \} $.
+\end{exercise}
+\begin{proof}
+	Assume for the sake of contradiction that $ \emptyset = \{ \emptyset \} $.
+	This means that since $ \emptyset $ is an element of $ \{ \emptyset \} $, we also have $ \emptyset \in \emptyset $.
+	But we also know from the definition of the empty set that for any element $ x $, $ x \notin \emptyset $.
+	So we have a contradiction, since $ \emptyset \in \emptyset $ and $ \emptyset \notin \emptyset $.
+	
+	Suppose for the sake of contradiction, that $ \{ \emptyset \} = \{ \{ \emptyset \} \} $.
+	We then have that $ \emptyset $ is an element of $ \{ \emptyset \} $ from the definition of a singleton set.
+	From set equality we then have that $ \emptyset \in \{ \{ \emptyset \} \} $.
+	From the definition of a singleton set we have that $ \emptyset \neq \{ \emptyset \} \implies \emptyset \notin \{ \{ \emptyset \} \} $, but from above we know that $ \emptyset \neq \{ \emptyset \} $, so $ \emptyset \notin \{ \{ \emptyset \} \} $, giving a contradiction.
+\end{proof}
+
+\begin{exercise}{3.1.5}
+	$ A \subseteq B \iff A \cup B = B \iff A \cap B = A $.
+\end{exercise}
+\begin{proof}
+	Suppose $ A \subseteq B $.
+	To show $ A \cup B = B $, we must prove $ A \cup B \subseteq B $ and $ A \cup B \supseteq B $.
+	Let $ x \in A \cup B $.
+	Then either $ x \in A $ or $ x \in B $.
+	If $ x \in A $, then since $ A $ is a subset of $ B $ we have that $ x \in B $. So in both cases $ x \in B $, proving the first subset relation.
+	Now let $ x \in B $.
+	Then clearly $ x \in A \cup B $, which proves the second subset relation.
+	So we have shown that $ A \subseteq B \implies A \cup B = B $.
+	
+	Suppose $ A \cup B = B $.
+	To prove $ A \subseteq B $, we must show that every $ x $ in $ A $ is also in $ B $.
+	Let $ x \in A $.
+	We then also know that $ x \in A \cup B $.
+	Since $ A \cup B = B $, we then know that $ x \in B $.
+	
+	Suppose $ A \subseteq B $.
+	To show $ A \cap B = A $, we must prove $ A \cap B \subseteq A $ and $ A \cap B \supseteq A $.
+	Let $ x \in A \cap B $.
+	From this we know that $ x \in A $, which proves the first subset relation.
+	Now let $ x \in A $.
+	Since $ A \subseteq B $, we know that $ x \in B $, so we then have $ x \in A \cap B $, which proves the second subset relation.
+	
+	Suppose $ A \cap B = A $.
+	To prove $ A \subseteq B $, we must show that every $ x $ in $ A $ is also in $ B $.
+	Let $ x \in A $.
+	Since $ A \cap B = A $, we know that $ x \in A \cap B $, so $ x \in B $.
+\end{proof}
+
 \end{document}
