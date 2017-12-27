@@ -304,4 +304,24 @@
 	A function, $ f: X \to Y $, is \textit{surjective} if $ \forall y \in Y, \exists x \in X, f(x) = y $.
 \end{definition}
 
+\begin{exercise}{3.3.2}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Show that if $ f $ and $ g $ are both injective, then so is $ g \circ f $; similarly, show that if $ f $ and $ g $ are both surjective, then so is $ g \circ f $.
+\end{exercise}
+\begin{proof}
+	Suppose $ (g \circ f)(x) = (g \circ f)(x') $.
+	We must show that $ x = x' $.
+	From the definition of composition of functions we have $ g(f(x)) = g(f(x')) $.
+	Since $ g $ is injective we know that $ f(x) = f(x') $.
+	And since $ f $ is injective we know that $ x = x' $.
+	
+	Let $ z \in Z $ be an arbitrary element.
+	We must show that there exists an $ x \in X $ such that $ (g \circ f)(x) = z $.
+	Since $ g $ is surjective we know that there exists a $ y $ such that $ g(y) = z $.
+	Since $ f $ is surjective we know that there exists an $ x $ such that $ f(x) = y $.
+	Finally, $ (g \circ f)(x) = g(f(x)) = g(y) = z $.
+\end{proof}
+
+
+
 \end{document}
