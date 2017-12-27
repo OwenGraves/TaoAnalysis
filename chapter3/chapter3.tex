@@ -322,6 +322,24 @@
 	Finally, $ (g \circ f)(x) = g(f(x)) = g(y) = z $.
 \end{proof}
 
+\begin{exercise}{3.3.4}
+	Let $ f: X \to Y$, $ \tilde{f}: X \to Y$, $g: Y \to Z$, and $ \tilde{g}: Y \to Z $ be functions.
+	Prove that if $ g \circ f = g \circ \tilde{f} $ and $ g $ is injective, then $ f = \tilde{f} $.
+	Prove that if $ g \circ f = \tilde{g} \circ f $ and $ f $ is surjective, then $ g = \tilde{g} $.
+\end{exercise}
+\begin{proof}
+	Suppose that $ g \circ f = g \circ \tilde{f} $ and that $ g $ is injective.
+	From the definition of composition we have that $ g(f(x)) = g(\tilde{f}(x)) $ for all $ x \in X $.
+	Since $ g $ is injective we also know that $ f(x) = \tilde{f}(x) $.
+	Finally, because $ f $ and $ \tilde{f} $ have the same domain, codomain, and graph, they are equal.
+	
+	Suppose that $ g \circ f = \tilde{g} \circ f $ and that $ f $ is surjective.
+	We then have $ g(f(x)) = \tilde{g}(f(x)) $ for all $ x \in X $.
+	Let $ y \in Y $ be arbitrary, we then have to show that $ g(y) = \tilde{g}(y) $.
+	We know that there exists an $ x \in X $ such that $ f(x) = y $.
+	From this we know $ g(y) = \tilde{g}(y) $, and since the domain and codomain of $ g $ are the same, $ g = \tilde{g} $.
+\end{proof}
+
 
 
 \end{document}
