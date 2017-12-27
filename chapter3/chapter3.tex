@@ -6,7 +6,9 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
- 
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
@@ -287,5 +289,19 @@
 	Let $ x \in A $.
 	Since $ A \cap B = A $, we know that $ x \in A \cap B $, so $ x \in B $.
 \end{proof}
+
+\begin{lemma}{3.3.12}
+	Composition is associative.
+	Let $ f : Z \to W$, $g : Y \to Z $, and $ h : X \to Y $ be functions.
+	Then $ f \circ (g \circ h) = (f \circ g) \circ h $.
+\end{lemma}
+
+\begin{definition}{3.3.14}
+	A function is \textit{injective} if $ f(x) = f(x') \implies x = x' $.
+\end{definition}
+
+\begin{definition}{3.3.14}
+	A function, $ f: X \to Y $, is \textit{surjective} if $ \forall y \in Y, \exists x \in X, f(x) = y $.
+\end{definition}
 
 \end{document}
