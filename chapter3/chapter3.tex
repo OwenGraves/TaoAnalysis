@@ -23,7 +23,9 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 \newenvironment{proposition}[2][Proposition]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
- 
+\newenvironment{conjecture}[2][Conjecture]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
 \begin{document}
 
 \title{Tao Analysis Chapter 3}
@@ -338,6 +340,126 @@
 	Let $ y \in Y $ be arbitrary, we then have to show that $ g(y) = \tilde{g}(y) $.
 	We know that there exists an $ x \in X $ such that $ f(x) = y $.
 	From this we know $ g(y) = \tilde{g}(y) $, and since the domain and codomain of $ g $ are the same, $ g = \tilde{g} $.
+\end{proof}
+
+\begin{conjecture}{}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Then if $ g $ is surjective and $ g \circ f $ is injective, $ g $ must be injective, and thus also bijective.
+\end{conjecture}
+
+\begin{exercise}{3.3.5}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Show that if $ g \circ f $ is injective, then $ f $ must be injective.
+	Also that if $ g \circ f $ is surjective, then $ g $ must be surjective.
+\end{exercise}
+\begin{proof}
+	Suppose that $ g \circ f $ is injective, i.e., $ g(f(x)) = g(f(x')) $ implies $ x = x' $ for any $ x, x' \in X $.
+	Let $ x $ and $ x' $ be arbitrary elements in $ X $, where $ f(x) = f(x') $.
+	We must show that $ x = x' $.
+	Since $ f(x) = f(x') $, we know that $ g(f(x)) = g(f(x')) $, and so $ x = x' $.
+	
+	Suppose $ g \circ f $ is surjective, i.e. for every $ z \in Z $, there exists an $ x \in X $ such that $ g(f(x)) = z $.
+	Let $ z \in Z $.
+	We need to show that there exists a $ y \in Y $ where $ g(y) = z $.
+	Since $ g \circ f $ is surjective we know that there exists an $ x \in X $ such that $ g(f(x)) = z $.
+	So, letting $ y = f(x) $, we have $ g(y) = z $ as desired.
+\end{proof}
+
+\begin{exercise}{3.3.6}
+	Let $ f: X \to Y $ be a bijective function with $ f^{-1} $ its inverse.
+	Show that $ f^{-1} $ is invertible with $ (f^{-1})^{-1} = f $.
+\end{exercise}
+\begin{proof}
+	The definition of an inverse function is $ f(x) = y \iff f^{-1}(y) = x $.
+	So an inverse of the inverse would be $ f^{-1}(y) = x \iff (f^{-1})^{-1}(x) = y = f(x) $.
+\end{proof}
+
+\begin{exercise}{3.3.7}
+	Let $ f : X \to Y $ and $ g : Y \to Z $ be functions.
+	Show that if $ f $ and $ g $ are bijective, then so is $ g \circ f $, and we have $ (g \circ f)^{-1} = f^{-1} \circ g^{-1} $.
+\end{exercise}
+\begin{proof}
+	From exercise 3.3.2, we have shown that the composition $ g \circ f $ is both injective and surjective, and thus bijective.
+	
+	We know that $ g \circ f $ is a function from $ X \to Z $, so its inverse is a function from $ Z \to X $.
+	We also know that $ f^{-1} $ is a function from $ Y \to X $ and $ g^{-1} $ is a function from $ Z \to Y $, so $ f^{-1} \circ g^{-1} $ is a function from $ Z \to X $ as well.
+	Thus, we just need to check that $ (g \circ f)^{-1}(z) = (f^{-1} \circ g^{-1})(z) $ for all $ z \in Z $.
+	Since $ g $ is bijective, there is exactly one $ y \in Y $ such that $ g(y) = z $, and similarly we have $ f(x) = y $.
+	Then we have that $ (g \circ f)(x) = g(f(x)) = g(y) = z $, and thus $ (g \circ f)^{-1}(z) = x $.
+	We also have $ (f^{-1} \circ g^{-1})(z) = f^{-1}(g^{-1}(z)) = f^{-1}(y) = x $.
+	Since both functions are equal for the arbitrarily chosen value of $ z \in Z $, we have the desired equivalence.
+\end{proof}
+
+\begin{definition}{}
+	If $ X \subseteq Y $, let $ \iota_{X \to Y} : X \to Y $ be the \textit{inclusion map from $ X $ to $ Y $}, defined by mapping $ x \mapsto x $ for all $ x \in X $.
+	In particular $ \iota_{X \to X} $ is the \textit{identity map} on $ X $.
+\end{definition}
+
+\begin{exercise}{3.3.8a}
+	Show that if $ X \subseteq Y \subseteq Z $ then $ \iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z} $.
+\end{exercise}
+\begin{proof}
+	Suppose $ X \subseteq Y \subseteq Z $.
+	Both functions have the same domain and range, $ X \to Z $, so we just need to check the equivalence of the graphs.
+	$ \iota_{Y \to Z} \circ \iota_{X \to Y}(x) = \iota_{Y \to Z}(\iota_{X \to Y}(x)) = \iota_{Y \to Z}(x) $.
+	Since $ X \subseteq Y $, $ x \in Y $, so $ \iota_{Y \to Z}(x) = x $.
+	We also have $ X \subseteq Z $, so $ \iota_{X \to Z}(x) = x $, and thus the equality.
+\end{proof}
+
+\begin{exercise}{3.3.8b}
+	Show that if $ f : A \to B $ is any function, then $ f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f $.
+\end{exercise}
+\begin{proof}
+	All three functions have the same domain and range, and so now we only need to check that the graphs are equivalent.
+	Let $ x \in A $ and so $ f(x) \in B $.
+	\begin{align*}
+		f \circ \iota_{A}(x)
+		&= f(\iota_{A}(x)) \tag{\text{def of composition}}
+		\\ &= f(x) \tag{\text{def of identity map}}
+		\\ &= \iota_{B}(f(x)) \tag{\text{def of identity map}}
+		\\ &= f \circ \iota_{B}(x) \tag{\text{def of composition}}
+	\end{align*}
+\end{proof}
+
+\begin{exercise}{3.3.8c}
+	Show that, if $ f : A \to B $ is a bijective function, then $ f \circ f^{-1} = \iota_{B} $ and $ f^{-1} \circ f = \iota_{A} $.
+\end{exercise}
+\begin{proof}
+	Suppose $ f $ is a bijective function.
+	The domain and codomain's are clearly the same, so we need only check the graphs.
+	Let $ b $ be an arbitrary element from $ B $, and since $ f $ is bijective there is an unique $ a \in A $ such that $ f(a) = b $.
+	Consequently, we also have $ f^{-1}(b) = a $.
+	We then have $ (f \circ f^{-1})(b) = f(f^{-1}(b)) = f(a) = b = \iota_{B}(b) $.
+	
+	The other case is similar.
+\end{proof}
+
+\begin{exercise}{3.3.8d}
+	Show that if $ X $ and $ Y $ are disjoint sets, and $ f : X \to Z $ and $ g : Y \to Z $ are functions, then there is a unique function $ h : X \cup Y \to Z $ such that $ h \circ \iota_{X \to X \cup Y} = f $ and $ h \circ \iota_{Y \to X \cup Y} = g $.
+\end{exercise}
+\begin{proof}
+	Since $ X $ and $ Y $ are disjoint sets we know that $ X \cap Y = \emptyset $.
+	Let $ h : X \cup Y \to Z $ be a function defined as follows
+	\[
+	h(a) =
+	\begin{cases}
+		f(a), & \text{if } a \in X
+		\\ g(a), & \text{if } a \in Y
+	\end{cases}
+	\]
+	Since $ X $ and $ Y $ are disjoint we know that $ h $ is well-defined since an element $ a \in X \cup Y $ must either be in $ X $ or in $ Y $, but not in both.
+	Let $ x \in X $ be arbitrary, we now show that $ (h \circ \iota_{X \to X \cup Y})(x) = f(x) $.
+	We have $ (h \circ \iota_{X \to X \cup Y})(x) = h(\iota_{X \to X \cup Y}(x)) = h(x) $, which equals $ f(x) $ from the definition of $ h $ and the fact that $ x \in X $.
+	In a similar manner we now let $ y \in Y $ be arbitrary, and obtain $ h(\iota_{Y \to X \cup Y}(y)) = h(y) $, which equals $ g(y) $ from the definition of $ h $, which shows that our function $ h $ has the desired properties.
+	
+	We now prove uniqueness.
+	Let $ h $ and $ h_{2} $ be functions satisfying the specified properties.
+	We must show that $ h $ and $ h_{2} $ must be equal.
+	Let $ a \in X \cup Y $, to show equality, we must show that $ h(a) = h_{2}(a) $.
+	For our first case we have $ a \in X $, and since $ X $ and $ Y $ are disjoint, we also know that $ a \notin Y $.
+	From our hypotheses we know that $ (h \circ \iota_{X \to X \cup Y})(a) = f(a) $ and thus $ h(a) = f(a) = h_{2}(a) $.
+	The second case is similar.
+	Thus we have shown that $ h(a) = h_{2}(a) $ for all $ a $, so $ h $ must be unique.
 \end{proof}
 
 
