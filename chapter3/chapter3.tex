@@ -462,6 +462,22 @@
 	Thus we have shown that $ h(a) = h_{2}(a) $ for all $ a $, so $ h $ must be unique.
 \end{proof}
 
-
-
+\begin{exercise}{3.4.1}
+	Let $ V $ be a subset of $ Y $.
+	Prove that the forward image of $ V $ under $ f^{-1} $ is the same set as the inverse image of $ V $ under $ f $.
+\end{exercise}
+\begin{proof}
+	We wish to show $ f^{-1}(V) = f^{\circ}(V) $ where $ f^{\circ}(V) $ denotes the inverse image of $ V $ under $ f $.
+	Let $ x $ be an element of $ f^{-1}(V) = \{ f^{-1}(v) : v \in V \} $.
+	We need to show that $ x \in f^{\circ}(V) = \{ x \in X : f(x) \in V \} $.
+	Since $ f^{-1} $ is a function from $ Y $ to $ X $, $ f^{-1}(v) $ is an element of $ X $, so $ x \in X $.
+	We now need to show that $ f(x) \in V $.
+	However, from the definition of $ f^{-1}(V) $, we have $ x = f^{-1}(v) $, so $ f(x) = v $, which is an element of $ V $, again from the definition of $ f^{-1}(V) $.
+	Thus we have shown that if $ x \in f^{-1}(V) $ then $ x \in f^{\circ}(V) $.
+	
+	Now suppose that $ x \in f^{\circ}(V) = \{ x \in X : f(x) \in V \} $.
+	We need to show that $ x = f^{-1}(v) $ where $ v \in V $, but since $ f $.
+	However, we know that $ f(x) = v \in V $, and since $ f $ is bijective we also have $ x = f^{-1}(v) $.
+	Thus we have shown that if $ x \in f^{\circ}(V) $ then $ x \in f^{-1}(V) $, and consequently, $ f^{-1} = f^{\circ} $.
+\end{proof}
 \end{document}
