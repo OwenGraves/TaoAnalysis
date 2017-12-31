@@ -480,4 +480,18 @@
 	However, we know that $ f(x) = v \in V $, and since $ f $ is bijective we also have $ x = f^{-1}(v) $.
 	Thus we have shown that if $ x \in f^{\circ}(V) $ then $ x \in f^{-1}(V) $, and consequently, $ f^{-1} = f^{\circ} $.
 \end{proof}
+
+\begin{exercise}{3.4.3}
+	Let $ A $, $ B $ be two subsets of a set $ X $, and let $ f : X \to Y $ be a function.
+	Show that $ f(A \cap B) \subseteq f(A) \cap f(B) $, that $ f(A) \setminus f(B) \subseteq f(A \setminus B) $, and that $ f(A \cup B) = f(A) \cup f(B) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in f(A \cap B) $.
+	We then know that $ x = f(c) $ for some $ c \in A \cap B $.
+	To show $ x \in f(A) $ is suffices to show $ x = f(a) $ for some $ a \in A $, and similarly for $ B $.
+	Since we have both $ c \in A $ and $ c \in B $, it follows that both $ x \in f(A) $ and also $ x \in f(B) $.
+\end{proof}
+
+
+
 \end{document}
