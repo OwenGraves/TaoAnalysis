@@ -490,8 +490,53 @@
 	We then know that $ x = f(c) $ for some $ c \in A \cap B $.
 	To show $ x \in f(A) $ is suffices to show $ x = f(a) $ for some $ a \in A $, and similarly for $ B $.
 	Since we have both $ c \in A $ and $ c \in B $, it follows that both $ x \in f(A) $ and also $ x \in f(B) $.
+	
+	Let $ x \in f(A) \setminus f(B) $.
+	This means that $ x \in f(A) $ and that $ x \notin f(B) $.
+	From this we know that $ x = f(a) $ for some $ a \in A $.
+	And also that $ x \neq f(b) $ for any $ b \in B $.
+	We know that $ x \in f(A \setminus B) \iff x = f(c) $ for some $ c \in A \setminus B $.
+	Let $ c = a $, then we immediately have $ c \in A $ and $ x = f(c) $.
+	Suppose $ c \in B $, then we would have $ x \neq f(c) $, a contradiction from above, so it must be the case that $ c \notin B $.
+	Thus we have shown that there exists a $ c \in A \setminus B $ such that $ x = f(c) $, which implies that $ x \in f(A \setminus B) $.
+	
+	Let $ x \in f(A \cup B) $.
+	This means that $ x = f(c) $ for some $ c \in A \cup B $.
+	Consider the first case where $ c \in A $.
+	Then we have $ x \in f(A) $, and consequently $ x \in f(A) \cup f(B) $.
+	The case where $ c \in B $ is similar.
+	Now suppose $ x \in f(A) \cup f(B) $.
+	This means that either $ x \in f(A) $ or $ x \in f(B) $, so we have two cases again.
+	If $ x \in f(A) $, then there exists a $ c \in A \cup B $ such that $ x = f(c) $, so $ x \in f(A \cup B) $.
+	Similar reasoning applies with $ x \in f(B) $.
 \end{proof}
 
+\begin{exercise}{3.4.4}
+	Show that $ f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in f^{-1}(U \cap V) $, then $ f(x) \in U \cap V $, so $ f(x) \in U $ and $ f(x) \in V $, from which we can obtain $ f^{-1}(U) \cap f^{-1}(V) $.
+	Now let $ x \in f^{-1}(U) \cap f^{-1}(V) $, then $ x \in f^{-1}(U) $ and $ x \in f^{-1}(V) $, so we have $ f(x) \in U $ and $ f(x) \in V $, which implies $ f(x) \in U \cap V $, and thus $ x \in f^{-1}(U \cap V) $.
+\end{proof}
 
+\begin{exercise}{3.4.5}
+	Let $ f : X \to Y $ be a function with $ S \subseteq Y $.
+	Show that $ f(f^{-1}(S)) = S \iff f $ is surjective.
+	Now let $ S \subseteq X $ and show that $ f^{-1}(f(S)) = S \iff f $ is injective.
+\end{exercise}
+\begin{proof}
+	Suppose $ f $ is surjective.
+	Now let $ x $ be an element of $ f(f^{-1}(S)) $.
+	$ f(f^{-1}(S)) = \{ f(x) : x \in f^{-1}(S) \} $.
+	\textbf{TODO}
+\end{proof}
+
+\begin{lemma}{3.4.9}
+	Let $ X $ be a set.
+	Then the set $ \{ Y : Y \text{ is a subset of } X \} $ is a set.
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
 
 \end{document}
