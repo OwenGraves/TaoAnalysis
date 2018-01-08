@@ -519,6 +519,14 @@
 	Now let $ x \in f^{-1}(U) \cap f^{-1}(V) $, then $ x \in f^{-1}(U) $ and $ x \in f^{-1}(V) $, so we have $ f(x) \in U $ and $ f(x) \in V $, which implies $ f(x) \in U \cap V $, and thus $ x \in f^{-1}(U \cap V) $.
 \end{proof}
 
+\begin{lemma}{A}
+	Let $ f : X \to Y $ be a function, then $ f^{-1}(Y) = X $.
+\end{lemma}
+\begin{proof}
+	We have $ f^{-1}(Y) = \{ x \in X : f(x) \in Y \} $.
+	Since from the definition of a function we have $ f(x) \in Y $ for every $ x \in X $, the result clearly holds.
+\end{proof}
+
 \begin{exercise}{3.4.5}
 	Let $ f : X \to Y $ be a function with $ S \subseteq Y $.
 	Show that $ f(f^{-1}(S)) = S \iff f $ is surjective.
@@ -526,9 +534,30 @@
 \end{exercise}
 \begin{proof}
 	Suppose $ f $ is surjective.
-	Now let $ x $ be an element of $ f(f^{-1}(S)) $.
-	$ f(f^{-1}(S)) = \{ f(x) : x \in f^{-1}(S) \} $.
-	\textbf{TODO}
+	Let $ s $ be an element of $ f(f^{-1}(S)) $.
+	$ f(f^{-1}(S)) = \{ f(x) : x \in f^{-1}(S) \} $, so we know that $ s = f(x) $ where $ x \in f^{-1}(S) $.
+	We then know that $ f(x) \in S $, so $ s \in S $ as needed.
+	Now let $ s \in S $.
+	Then since $ f $ is surjective we know that there exists an $ x \in X $ such that $ s = f(x) $, with $ f(x) \in S $ because $ s \in S $.
+	Since $ x \in f^{-1}(S) $, we have $ s \in f(f^{-1}(S)) $ as needed.
+	
+	We now suppose $ f(f^{-1}(S)) = S $ for every $ S \subseteq Y $ and prove $ f $ is surjective.
+	Let $ y \in Y $ be arbitrary, we must show that there exists an $ x \in X $ such that $ f(x) = y $.
+	In the particular case where $ S = Y $ we know that $ f(f^{-1}(Y)) = Y $.
+	This means $ \{ f(x) : x \in f^{-1}(Y) \} = \{ y : y \in Y \} $, so we have $ y \in \{ f(x) : x \in f^{-1}(Y) \} $, which means $ y = f(x) $ where $ x \in f^{-1}(Y) $, and since $ X = f^{-1}(Y) $ from Lemma A, we have shown $ f $ is surjective.
+	
+	We now let $ S \subseteq X $ and suppose $ f $ is injective.
+	Let $ s $ be an element of $ f^{-1}(f(S)) $.
+	$ f^{-1}(f(S)) = \{ x \in X : f(x) \in f(S) \} $, so $ s \in X $ and $ f(s) \in f(S) $ which means $ \exists x \in S, f(x) = f(s) $.
+	Since $ f $ is injective we then have $ x = s $ and thus $ s \in S $ as desired.
+	Now let $ s \in S $.
+	Since $ s \in f^{-1}(f(S)) \iff f(s) \in f(S) \iff \exists x \in S, f(s) = f(x) $, and we have such an $ x $ (namely $ s $), this direction is done.
+	
+	We now suppose $ f^{-1}(f(S)) = S $ for every $ S \subseteq X $ and prove $ f $ is injective.
+	Let $ x_{1}, x_{2} \in X $ and suppose $ f(x_{1}) = f(x_{2}) $.
+	We must show that $ x_{1} = x_{2} $.
+	We know that $ \{ f(x_{1}) \} = \{ f(x_{2}) \} $, but then this is the definition of the image for the singleton sets, so $ f(\{ x_{1} \}) = f(\{ x_{2} \}) $.
+	In particular, from our assumption, taking $ S = \{ x_{1} \} $, we know that $ \{ x_{1} \} = f^{-1}(f(\{ x_{1} \})) = f^{-1}(f(\{ x_{2} \})) = \{ x_{2} \} $, so $ x_{1} $ = $ x_{2} $ as desired.
 \end{proof}
 
 \begin{lemma}{3.4.9}
