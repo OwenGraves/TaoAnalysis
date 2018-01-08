@@ -564,8 +564,25 @@
 	Let $ X $ be a set.
 	Then the set $ \{ Y : Y \text{ is a subset of } X \} $ is a set.
 \end{lemma}
+
+\begin{exercise}{3.4.10}
+	Let $ I $ and $ J $ be two sets, and for all $ \alpha \in I \cup J $ let $ A_{\alpha} $ be a set.
+	Show that $ (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = (\bigcup_{\alpha \in I \cup J} A_{\alpha}) $.
+	Now if $ I $ and $ J $ are non-empty then show $ (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = (\bigcap_{\alpha \in I \cup J} A_{\alpha}) $.
+\end{exercise}
 \begin{proof}
+	Let $ y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) $.
+	There are two cases where $ y $ is in each of the unioned sets.
+	For the first case we have, $ \exists \alpha \in I, y \in A_{\alpha} $.
+	We need to show that there exists an $ \alpha \in I \cup J $ such that $ y \in A_{\alpha} $, but clearly this is the case since we have an $ \alpha \in I $.
+	The second case is similar.
+	Now let $ y \in (\bigcup_{\alpha \in I \cup J} A_{\alpha}) $.
+	This means that there exists an $ \alpha \in I \cup J $ such that $ y \in A_{\alpha} $.
+	This means that $ \alpha $ is either in $ I $ or $ J $.
+	If $ \alpha \in I $ then we have $ y \in \bigcup_{\alpha \in I} A_{\alpha} $.
+	The remaining case and union is simple.
 	
+	TODO
 \end{proof}
 
 \end{document}
