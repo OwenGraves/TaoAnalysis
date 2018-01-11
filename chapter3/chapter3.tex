@@ -582,7 +582,16 @@
 	If $ \alpha \in I $ then we have $ y \in \bigcup_{\alpha \in I} A_{\alpha} $.
 	The remaining case and union is simple.
 	
-	TODO
+	Let $ y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) $, so $ y \in (\bigcap_{\alpha \in I} A_{\alpha}) $ and $ y \in (\bigcap_{\alpha \in J} A_{\alpha}) $.
+	We need to show that $ y \in A_{\alpha} $ for all $ \alpha \in I \cup J $.
+	Let $ \alpha $ be an arbitrary element in $ I \cup J $, then we know that $ \alpha \in I $ or $ \alpha \in J $, so we have two cases.
+	We know that for every $ \alpha \in I $, $ y \in A_{\alpha} $, and similarly for every $ \alpha \in J $, so we have the desired conclusion.
+	Now let $ y \in (\bigcap_{\alpha \in I \cup J} A_{\alpha}) $.
+	Then for every $ \alpha \in I \cup J $ we have $ y \in A_{\alpha} $.
+	We need to show that for every $ \alpha \in I $, we have $ y \in A_{\alpha} $, so let $ \alpha $ be an arbitrary element in $ I $.
+	Since $ \alpha \in I $, then also $ \alpha \in I \cup J $, so we have $ y \in A_{\alpha} $, with the other case for $ J $ following similarly and providing the desired result.
 \end{proof}
+
+
 
 \end{document}
