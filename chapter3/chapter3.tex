@@ -592,6 +592,22 @@
 	Since $ \alpha \in I $, then also $ \alpha \in I \cup J $, so we have $ y \in A_{\alpha} $, with the other case for $ J $ following similarly and providing the desired result.
 \end{proof}
 
+\begin{exercise}{3.5.4}
+	Show that $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in A \times (B \cup C) $, and so $ x = (a, d) $ for some $ a \in A $ and $ d \in B \cup C $.
+	There are now two cases, the first of which $ d \in B $.
+	In this case we have $ x = (a, b) $ for $ a \in A $ and $ b \in B $ so $ x \in A \times B $.
+	The other case is similar and these are all bidirectional so we have $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.	
+\end{proof}
 
+\begin{exercise}{3.5.5}
+	Show that $ (A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in (A \times B) \cap (C \times D) $, then we have $ x \in A \times B $ and $ x \in C \times D $.
+	So $ x = (a, b) $.
+\end{proof}
 
 \end{document}
