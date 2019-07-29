@@ -1,0 +1,613 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{conjecture}[2][Conjecture]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+
+\begin{document}
+
+\title{Tao Analysis Chapter 3}
+\author{Owen Graves}
+\date{}
+ 
+\maketitle
+ 
+\begin{lemma}{3.1.13a}
+	If $ a $ and $ b $ are objects, then $ \{a, b\} = \{a\} \cup \{b\} $.
+\end{lemma}
+\begin{proof}
+	To prove the two sets are equal we must show that every element $ y $ of $ \{a, b\} $ is also an element of $ \{a\} \cup \{b\} $ and vice versa.
+	From the definition of pair sets, $ y \in \{a, b\} $ if and only if $ y = a $ or $ y = b $.
+	So first consider the case where $ y = a $, which implies that $ y \in \{a\} $ from the definition of a singleton set.
+	From Axiom 3.4, we then have $ y \in \{a\} \cup \{b\} $.
+	Now consider the case where $ y = b $, which implies that $ y \in \{b\} $ from the definition of a singleton set.
+	Then again from Axiom 3.4, we have $ y \in \{a\} \cup \{b\} $.
+	We now need to show that for every element $ y \in \{a\} \cup \{b\} $ we have $ y \in \{a, b\} $.
+	From Axiom 3.4, we have $ y \in \{a\} \cup \{b\} $ if and only if $ y \in \{a\} $ or $ y \in \{b\} $.
+	So first consider the case where $ y \in \{a\} $, which implies that $ y = a $ from the definition of a singleton set.
+	Then we have $ y = a $ or $ y = b $ which is the definition of a pair set and so $ y \in \{a, b\} $.
+	For the case where $ y \in \{b\} $, we also have $ y = b $.
+	This entails that $ y = a $ or $ y = b $, which implies that $ y \in \{a, b\} $.
+\end{proof}
+
+\begin{lemma}{3.1.13b}
+	The union operation is commutative, i.e, $ A \cup B = B \cup A $.
+\end{lemma}
+\begin{proof}
+	From the definition of set equality, we must show that every element $ x $ of $ A \cup B $ is also an element of $ B \cup A $ and vice versa.
+	Suppose that $ x \in A \cup B $.
+	By Axiom 3.4, this means that either $ x \in A $ or $ x \in B $, which can be rewritten as $ x \in B $ or $ x \in A $.
+	By Axiom 3.4 again, this is equivalent to $ x \in B \cup A $.
+	We must now show for every element $ x \in B \cup A $ that $ x \in A \cup B $ also holds.
+	So suppose $ x \in B \cup A $.
+	Then we know that $ x \in B $ or $ x \in A $, and so $ x \in A \cup B $ as desired.
+\end{proof}
+
+\begin{lemma}{3.1.13c}
+	The union operation is associative, i.e, $ (A \cup B) \cup C = A \cup (B \cup C) $.
+\end{lemma}
+\begin{proof}
+	We must show that every element $ x $ of $ (A \cup B) \cup C $ is also an element of $ A \cup (B \cup C) $ and vice versa.
+	So suppose that $ x $ is an element of $ (A \cup B) \cup C $.
+	By Axiom 3.4 this means that either $ x \in A \cup B $ or $ x \in C $ is true.
+	We now divide into cases.
+	If $ x \in C $ then also $ x \in B \cup C $ by Axiom 3.4, and again using Axiom 3.4, $ x \in A \cup (B \cup C) $.
+	Now suppose instead $ x \in A \cup B $, then by Axiom 3.4, either $ x \in A $ or $ x \in B $ and divide into cases again.
+	If $ x \in A $, then $ x \in A \cup (B \cup C) $, by Axiom 3.4.
+	If $ x \in B $, then $ x \in B \cup C $, by Axiom 3.4, and hence also by Axiom 3.4, $ x \in A \cup (B \cup C) $.
+	Thus in all cases we have shown that every element of $ (A \cup B) \cup C $ is also an element of $ A \cup (B \cup C) $.
+	A similar argument shows that every element of $ A \cup (B \cup C) $ lies in $ (A \cup B) \cup C $, and so $ (A \cup B) \cup C = A \cup (B \cup C) $ as desired.
+\end{proof}
+
+\begin{lemma}{3.1.13d}
+	$ A \cup A = A \cup \emptyset = A $
+\end{lemma}
+\begin{proof}
+	We first prove $ A \cup A = A $ by showing each set is a subset of the other.
+	Let $ x $ be an element of $ A \cup A $.
+	Then from Axiom 3.4 we have $ x \in A $ or $ x \in A $, and in both cases $ x \in A $ as desired.
+	Now consider $ x \in A $, then we have $ x \in A $ or $ x \in A $.
+	Then by Axiom 3.4, we have $ x \in A \cup A $ which completes this proof.
+	
+	We now prove that $ A \cup \emptyset = A $.
+	Let $ x $ be an element of $ A \cup \emptyset $.
+	From Axiom 3.4 this means that $ x \in A $ or $ x \in \emptyset $.
+	If $ x \in A $, then clearly $ x \in A $.
+	If $ x \in \emptyset $, then from Axiom 3.2 we have a falsehood and so $ x \in A $ is vacuously implied.
+\end{proof}
+
+\begin{proposition}{3.1.18a}
+	Given sets $ A, B, C $, if $ A \subseteq B $ and $ B \subseteq C $ then $ A \subseteq C $.
+\end{proposition}
+\begin{proof}
+	We need to show that if $ x \in A $ then also $ x \in C $.
+	Suppose $ A \subseteq B $ and $ B \subseteq C $ and let $ x $ be an element in $ A $.
+	From $ A \subseteq B $ we know that $ x \in B $.
+	Since $ x \in B $ we know that $ x \in C $ from $ B \subseteq C $.
+\end{proof}
+
+\begin{proposition}{3.1.18b}
+	Given sets $ A $ and $ B $, if $ A \subseteq B $ and $ B \subseteq A $ then $ A = B $.
+\end{proposition}
+\begin{proof}
+	To prove $ A = B $ we must show that $ x \in A $ if and only if $ x \in B $.
+	Suppose $ A \subseteq B $ and $ B \subseteq A $.
+	From the definition of $ A \subseteq B $, we have $ x \in A $ implies $ x \in B $.
+	Similarly, from the definition of $ B \subseteq A $, we have $ x \in B $ implies $ x \in A $.
+	These two implications together allow the introduction of the biconditional $ x \in A $ if and only if $ x \in B $, thus completing the proof.
+\end{proof}
+
+\begin{proposition}{3.1.18c}
+	Given sets $ A, B, C $, if $ A \subsetneq B $ and $ B \subsetneq C $ then $ A \subsetneq C $.
+\end{proposition}
+\begin{proof}
+	We need to show that if $ x \in A $ then also $ x \in C $ and also that $ A \neq C $.
+	Suppose $ A \subsetneq B $ and $ B \subsetneq C $ and let $ x $ be an element in $ A $.
+	From $ A \subsetneq B $ we know that $ x \in B $.
+	Since $ x \in B $ we know that $ x \in C $ from $ B \subsetneq C $.
+	Thus we have shown that $ A \subseteq C $.
+	To prove $ A \neq C $, we assume $ A = C $ and derive a contradiction.
+	We have $ A \subseteq B $ from our assumption $ A \subsetneq B $.
+	Since we assumed $ A = C $, we have $ B \subsetneq A $ and consequently $ B \subseteq A $.
+	Since $ A \subseteq B $ and $ B \subseteq A $, we have $ A = B $ from Proposition 3.1.18b.
+	However, this contradicts our previous assumption that $ A \neq B $, and so A must not equal C.
+	Since we have shown that $ A \subseteq C $ and $ A \neq C $, we have proven that $ A \subsetneq C $.
+\end{proof}
+
+\begin{proposition}{3.1.28a}
+	$ A \cup \emptyset = A $ and $ A \cap \emptyset = \emptyset $.
+\end{proposition}
+\begin{proof}
+	The first equality follows from Lemma 3.1.13d.
+	
+	To prove the second equality we must show that every element of $ A \cap \emptyset $ is an element of $ \emptyset $ and vice versa.
+	Consider $ x \in A \cap \emptyset $, then by the definition of set intersection, we also have $ x \in \emptyset $.
+	Now consider $ x \in \emptyset $, but we also know that $ x \notin \emptyset $ from Axiom 3.2, which, from the principle of explosion, implies $ x \in A \cap \emptyset $.
+\end{proof}
+
+\begin{proposition}{3.1.28b}
+	Consider a set $ X $ containing $ A $ as a subset.
+	Then $ A \cup X = X $ and $ A \cap X = A $.
+\end{proposition}
+\begin{proof}
+	We prove the first equality by showing $ A \cup X \subseteq X $ and $ A \cup X \supseteq X $.
+	Consider $ x \in A \cup X $, then there are two cases.
+	If $ x \in A $, then we also have $ x \in X $ since $ A \subseteq X $.
+	In either case $ x \in X $ which shows that $ A \cup X \subseteq X $.
+	Now consider $ x \in X $, then from disjunction introduction we have $ x \in A \cup X $.
+	We have shown both subset inclusions and thus set equality.
+	
+	For the second equality we must show $ A \cap X \subseteq A $ and $ A \cap X \supseteq A $.
+	Consider $ x \in A \cap X $, then from the definition of set intersection we have $ x \in A $.
+	Now consider $ x \in A $, but then since $ A \subseteq X $, we have both $ x \in A $ and $ x \in X $ and thus $ x \in A \cap X $.
+\end{proof}
+
+\begin{proposition}{3.1.28c}
+	$ A \cap A = A $ and $ A \cup A = A $.
+\end{proposition}
+\begin{proof}
+	We prove the first equality by showing $ A \cap A \subseteq A $ and $ A \cap A \supseteq A $.
+	Let $ x \in A \cap A $, then also $ x \in A $.
+	Let $ x \in A $, then $ x \in A $ and $ x \in A $ so $ x \in A \cap A $.
+	
+	$ x \in A \cup A \iff x \in A \lor x \in A \iff x \in A $.
+\end{proof}
+
+\begin{proposition}{3.1.28d}
+	$ A \cup B = B \cup A $ and $ A \cap B = B \cap A $
+\end{proposition}
+\begin{proof}
+	The first equality is shown by Lemma 3.1.13b.
+	
+	$ x \in A \cap B \iff x \in A \text{ and } x \in B \iff x \in B \text{ and } x \in A \iff x \in B \cap A $.
+\end{proof}
+
+\begin{proposition}{3.1.28e}
+	$ (A \cup B) \cup C = A \cup (B \cup C) $ and $ (A \cap B) \cap C = A \cap (B \cap C) $.
+\end{proposition}
+\begin{proof}
+	The first equality is shown by Lemma 3.1.13c.
+	
+	The second equality is shown in a similar manner using the associativity of conjunction instead of the associativity of disjunction.
+\end{proof}
+
+\begin{proposition}{3.1.28f}
+	$ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \text{ and } A \cup (B \cap C) = (A \cup B) \cap (A \cup C) $.
+\end{proposition}
+\begin{proof}
+	$ x \in A \cap (B \cup C) \iff x \in A \land x \in B \cup C \iff x \in A \land (x \in B \lor x \in C) $.
+	There are two cases.
+	If $ x \in B $, then $ x \in A \land x \in B $ so $ x \in A \cap B $ which implies that $ x \in (A \cap B) \cup (A \cap C) $.
+	If $ x \in C $, then by similar logic $ x \in (A \cap B) \cup (A \cap C) $.
+	So we have shown $ A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C) $.
+	Now if $ x \in (A \cap B) \cup (A \cap C) $, then either $ x \in A \cap B $ or $ x \in A \cap C $.
+	For the first case, we have $ x \in A $ and $ x \in B $, so also $ x \in B \cup C $, which implies $ x \in A \cap (B \cup C) $.
+	Similar reasoning applies for the second case where $ x \in A $ and $ x \in C $.
+	
+	A similar argument can prove the second equality.
+\end{proof}
+
+\begin{proposition}{3.1.28g}
+	Consider a set $ X $, where $ A \subseteq X $.
+	Then $ A \cup (X \setminus A) = X $ and $ A \cap (X \setminus A) = \emptyset $.
+\end{proposition}
+\begin{proof}
+	Consider an $ x \in A \cup (X \setminus A) $, then there are two cases.
+	If $ x \in A $ then also $ x \in X $.
+	If $ x \in (X \setminus A) $, then also $ x \in X $ from the definition of set difference.
+	Now consider an $ x \in X $, then we have either $ x \in A $ or $ x \notin A $.
+	If $ x \in A $, then clearly $ x \in A \cup (X \setminus A) $.
+	If $ x \notin A $, then from the definition of set difference $ x \in X \setminus A $ so also $ x \in A \cup (X \setminus A) $.
+	
+	Consider an $ x \in A \cap (X \setminus A) $.
+	Then $ x \in A $ and $ x \in X \setminus A $, which also implies $ x \notin A $.
+	However, $ x \in A $ and $ x \notin A $ is a contradiction and so $ x \in \emptyset $ follows.
+	Now consider an $ x \in \emptyset $, but again since $ \forall x, x \notin \emptyset $, we also have $ x \notin \emptyset $, and as such anything follows, so $ x \in A \cap (X \setminus A) $.
+\end{proof}
+
+
+\begin{proposition}{3.1.28h}
+	Consider a set $ X $, where $ A \subseteq X $.
+	$ X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B) $ and $ X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B) $.
+\end{proposition}
+\begin{proof}
+	Let $ x \in X \setminus (A \cup B) $.
+	As a result we know that $ x \in X $ and $ x \notin A \cup B $.
+	From De Morgan's law we know that $ x \notin A $ and $ x \notin B $.
+	And as a result we know that $ x \in X \setminus A $ and $ x \in X \setminus B $.
+	Now let $ x \in (X \setminus A) \cap (X \setminus B) $.
+	As a result we know that $ x \in X $ and $ x \notin A $ and $ x \notin B $.
+	From De Morgan's law we have $ \lnot (x \in A \lor x \in B) $ so $ x \notin (A \cup B) $.
+	So $ x \in X \setminus (A \cup B) $.
+	
+	The other equality follows in a similar fashion.
+\end{proof}
+
+\begin{exercise}{3.1.2}
+	$ \emptyset \neq \{ \emptyset \} $, $ \{ \emptyset \} \neq \{ \{ \emptyset \} \} $.
+\end{exercise}
+\begin{proof}
+	Assume for the sake of contradiction that $ \emptyset = \{ \emptyset \} $.
+	This means that since $ \emptyset $ is an element of $ \{ \emptyset \} $, we also have $ \emptyset \in \emptyset $.
+	But we also know from the definition of the empty set that for any element $ x $, $ x \notin \emptyset $.
+	So we have a contradiction, since $ \emptyset \in \emptyset $ and $ \emptyset \notin \emptyset $.
+	
+	Suppose for the sake of contradiction, that $ \{ \emptyset \} = \{ \{ \emptyset \} \} $.
+	We then have that $ \emptyset $ is an element of $ \{ \emptyset \} $ from the definition of a singleton set.
+	From set equality we then have that $ \emptyset \in \{ \{ \emptyset \} \} $.
+	From the definition of a singleton set we have that $ \emptyset \neq \{ \emptyset \} \implies \emptyset \notin \{ \{ \emptyset \} \} $, but from above we know that $ \emptyset \neq \{ \emptyset \} $, so $ \emptyset \notin \{ \{ \emptyset \} \} $, giving a contradiction.
+\end{proof}
+
+\begin{exercise}{3.1.5}
+	$ A \subseteq B \iff A \cup B = B \iff A \cap B = A $.
+\end{exercise}
+\begin{proof}
+	Suppose $ A \subseteq B $.
+	To show $ A \cup B = B $, we must prove $ A \cup B \subseteq B $ and $ A \cup B \supseteq B $.
+	Let $ x \in A \cup B $.
+	Then either $ x \in A $ or $ x \in B $.
+	If $ x \in A $, then since $ A $ is a subset of $ B $ we have that $ x \in B $. So in both cases $ x \in B $, proving the first subset relation.
+	Now let $ x \in B $.
+	Then clearly $ x \in A \cup B $, which proves the second subset relation.
+	So we have shown that $ A \subseteq B \implies A \cup B = B $.
+	
+	Suppose $ A \cup B = B $.
+	To prove $ A \subseteq B $, we must show that every $ x $ in $ A $ is also in $ B $.
+	Let $ x \in A $.
+	We then also know that $ x \in A \cup B $.
+	Since $ A \cup B = B $, we then know that $ x \in B $.
+	
+	Suppose $ A \subseteq B $.
+	To show $ A \cap B = A $, we must prove $ A \cap B \subseteq A $ and $ A \cap B \supseteq A $.
+	Let $ x \in A \cap B $.
+	From this we know that $ x \in A $, which proves the first subset relation.
+	Now let $ x \in A $.
+	Since $ A \subseteq B $, we know that $ x \in B $, so we then have $ x \in A \cap B $, which proves the second subset relation.
+	
+	Suppose $ A \cap B = A $.
+	To prove $ A \subseteq B $, we must show that every $ x $ in $ A $ is also in $ B $.
+	Let $ x \in A $.
+	Since $ A \cap B = A $, we know that $ x \in A \cap B $, so $ x \in B $.
+\end{proof}
+
+\begin{lemma}{3.3.12}
+	Composition is associative.
+	Let $ f : Z \to W$, $g : Y \to Z $, and $ h : X \to Y $ be functions.
+	Then $ f \circ (g \circ h) = (f \circ g) \circ h $.
+\end{lemma}
+
+\begin{definition}{3.3.14}
+	A function is \textit{injective} if $ f(x) = f(x') \implies x = x' $.
+\end{definition}
+
+\begin{definition}{3.3.14}
+	A function, $ f: X \to Y $, is \textit{surjective} if $ \forall y \in Y, \exists x \in X, f(x) = y $.
+\end{definition}
+
+\begin{exercise}{3.3.2}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Show that if $ f $ and $ g $ are both injective, then so is $ g \circ f $; similarly, show that if $ f $ and $ g $ are both surjective, then so is $ g \circ f $.
+\end{exercise}
+\begin{proof}
+	Suppose $ (g \circ f)(x) = (g \circ f)(x') $.
+	We must show that $ x = x' $.
+	From the definition of composition of functions we have $ g(f(x)) = g(f(x')) $.
+	Since $ g $ is injective we know that $ f(x) = f(x') $.
+	And since $ f $ is injective we know that $ x = x' $.
+	
+	Let $ z \in Z $ be an arbitrary element.
+	We must show that there exists an $ x \in X $ such that $ (g \circ f)(x) = z $.
+	Since $ g $ is surjective we know that there exists a $ y $ such that $ g(y) = z $.
+	Since $ f $ is surjective we know that there exists an $ x $ such that $ f(x) = y $.
+	Finally, $ (g \circ f)(x) = g(f(x)) = g(y) = z $.
+\end{proof}
+
+\begin{exercise}{3.3.4}
+	Let $ f: X \to Y$, $ \tilde{f}: X \to Y$, $g: Y \to Z$, and $ \tilde{g}: Y \to Z $ be functions.
+	Prove that if $ g \circ f = g \circ \tilde{f} $ and $ g $ is injective, then $ f = \tilde{f} $.
+	Prove that if $ g \circ f = \tilde{g} \circ f $ and $ f $ is surjective, then $ g = \tilde{g} $.
+\end{exercise}
+\begin{proof}
+	Suppose that $ g \circ f = g \circ \tilde{f} $ and that $ g $ is injective.
+	From the definition of composition we have that $ g(f(x)) = g(\tilde{f}(x)) $ for all $ x \in X $.
+	Since $ g $ is injective we also know that $ f(x) = \tilde{f}(x) $.
+	Finally, because $ f $ and $ \tilde{f} $ have the same domain, codomain, and graph, they are equal.
+	
+	Suppose that $ g \circ f = \tilde{g} \circ f $ and that $ f $ is surjective.
+	We then have $ g(f(x)) = \tilde{g}(f(x)) $ for all $ x \in X $.
+	Let $ y \in Y $ be arbitrary, we then have to show that $ g(y) = \tilde{g}(y) $.
+	We know that there exists an $ x \in X $ such that $ f(x) = y $.
+	From this we know $ g(y) = \tilde{g}(y) $, and since the domain and codomain of $ g $ are the same, $ g = \tilde{g} $.
+\end{proof}
+
+\begin{conjecture}{}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Then if $ g $ is surjective and $ g \circ f $ is injective, $ g $ must be injective, and thus also bijective.
+\end{conjecture}
+
+\begin{exercise}{3.3.5}
+	Let $ f: X \to Y $ and $ g: Y \to Z $ be functions.
+	Show that if $ g \circ f $ is injective, then $ f $ must be injective.
+	Also that if $ g \circ f $ is surjective, then $ g $ must be surjective.
+\end{exercise}
+\begin{proof}
+	Suppose that $ g \circ f $ is injective, i.e., $ g(f(x)) = g(f(x')) $ implies $ x = x' $ for any $ x, x' \in X $.
+	Let $ x $ and $ x' $ be arbitrary elements in $ X $, where $ f(x) = f(x') $.
+	We must show that $ x = x' $.
+	Since $ f(x) = f(x') $, we know that $ g(f(x)) = g(f(x')) $, and so $ x = x' $.
+	
+	Suppose $ g \circ f $ is surjective, i.e. for every $ z \in Z $, there exists an $ x \in X $ such that $ g(f(x)) = z $.
+	Let $ z \in Z $.
+	We need to show that there exists a $ y \in Y $ where $ g(y) = z $.
+	Since $ g \circ f $ is surjective we know that there exists an $ x \in X $ such that $ g(f(x)) = z $.
+	So, letting $ y = f(x) $, we have $ g(y) = z $ as desired.
+\end{proof}
+
+\begin{exercise}{3.3.6}
+	Let $ f: X \to Y $ be a bijective function with $ f^{-1} $ its inverse.
+	Show that $ f^{-1} $ is invertible with $ (f^{-1})^{-1} = f $.
+\end{exercise}
+\begin{proof}
+	The definition of an inverse function is $ f(x) = y \iff f^{-1}(y) = x $.
+	So an inverse of the inverse would be $ f^{-1}(y) = x \iff (f^{-1})^{-1}(x) = y = f(x) $.
+\end{proof}
+
+\begin{exercise}{3.3.7}
+	Let $ f : X \to Y $ and $ g : Y \to Z $ be functions.
+	Show that if $ f $ and $ g $ are bijective, then so is $ g \circ f $, and we have $ (g \circ f)^{-1} = f^{-1} \circ g^{-1} $.
+\end{exercise}
+\begin{proof}
+	From exercise 3.3.2, we have shown that the composition $ g \circ f $ is both injective and surjective, and thus bijective.
+	
+	We know that $ g \circ f $ is a function from $ X \to Z $, so its inverse is a function from $ Z \to X $.
+	We also know that $ f^{-1} $ is a function from $ Y \to X $ and $ g^{-1} $ is a function from $ Z \to Y $, so $ f^{-1} \circ g^{-1} $ is a function from $ Z \to X $ as well.
+	Thus, we just need to check that $ (g \circ f)^{-1}(z) = (f^{-1} \circ g^{-1})(z) $ for all $ z \in Z $.
+	Since $ g $ is bijective, there is exactly one $ y \in Y $ such that $ g(y) = z $, and similarly we have $ f(x) = y $.
+	Then we have that $ (g \circ f)(x) = g(f(x)) = g(y) = z $, and thus $ (g \circ f)^{-1}(z) = x $.
+	We also have $ (f^{-1} \circ g^{-1})(z) = f^{-1}(g^{-1}(z)) = f^{-1}(y) = x $.
+	Since both functions are equal for the arbitrarily chosen value of $ z \in Z $, we have the desired equivalence.
+\end{proof}
+
+\begin{definition}{}
+	If $ X \subseteq Y $, let $ \iota_{X \to Y} : X \to Y $ be the \textit{inclusion map from $ X $ to $ Y $}, defined by mapping $ x \mapsto x $ for all $ x \in X $.
+	In particular $ \iota_{X \to X} $ is the \textit{identity map} on $ X $.
+\end{definition}
+
+\begin{exercise}{3.3.8a}
+	Show that if $ X \subseteq Y \subseteq Z $ then $ \iota_{Y \to Z} \circ \iota_{X \to Y} = \iota_{X \to Z} $.
+\end{exercise}
+\begin{proof}
+	Suppose $ X \subseteq Y \subseteq Z $.
+	Both functions have the same domain and range, $ X \to Z $, so we just need to check the equivalence of the graphs.
+	$ \iota_{Y \to Z} \circ \iota_{X \to Y}(x) = \iota_{Y \to Z}(\iota_{X \to Y}(x)) = \iota_{Y \to Z}(x) $.
+	Since $ X \subseteq Y $, $ x \in Y $, so $ \iota_{Y \to Z}(x) = x $.
+	We also have $ X \subseteq Z $, so $ \iota_{X \to Z}(x) = x $, and thus the equality.
+\end{proof}
+
+\begin{exercise}{3.3.8b}
+	Show that if $ f : A \to B $ is any function, then $ f = f \circ \iota_{A \to A} = \iota_{B \to B} \circ f $.
+\end{exercise}
+\begin{proof}
+	All three functions have the same domain and range, and so now we only need to check that the graphs are equivalent.
+	Let $ x \in A $ and so $ f(x) \in B $.
+	\begin{align*}
+		f \circ \iota_{A}(x)
+		&= f(\iota_{A}(x)) \tag{\text{def of composition}}
+		\\ &= f(x) \tag{\text{def of identity map}}
+		\\ &= \iota_{B}(f(x)) \tag{\text{def of identity map}}
+		\\ &= f \circ \iota_{B}(x) \tag{\text{def of composition}}
+	\end{align*}
+\end{proof}
+
+\begin{exercise}{3.3.8c}
+	Show that, if $ f : A \to B $ is a bijective function, then $ f \circ f^{-1} = \iota_{B} $ and $ f^{-1} \circ f = \iota_{A} $.
+\end{exercise}
+\begin{proof}
+	Suppose $ f $ is a bijective function.
+	The domain and codomain's are clearly the same, so we need only check the graphs.
+	Let $ b $ be an arbitrary element from $ B $, and since $ f $ is bijective there is an unique $ a \in A $ such that $ f(a) = b $.
+	Consequently, we also have $ f^{-1}(b) = a $.
+	We then have $ (f \circ f^{-1})(b) = f(f^{-1}(b)) = f(a) = b = \iota_{B}(b) $.
+	
+	The other case is similar.
+\end{proof}
+
+\begin{exercise}{3.3.8d}
+	Show that if $ X $ and $ Y $ are disjoint sets, and $ f : X \to Z $ and $ g : Y \to Z $ are functions, then there is a unique function $ h : X \cup Y \to Z $ such that $ h \circ \iota_{X \to X \cup Y} = f $ and $ h \circ \iota_{Y \to X \cup Y} = g $.
+\end{exercise}
+\begin{proof}
+	Since $ X $ and $ Y $ are disjoint sets we know that $ X \cap Y = \emptyset $.
+	Let $ h : X \cup Y \to Z $ be a function defined as follows
+	\[
+	h(a) =
+	\begin{cases}
+		f(a), & \text{if } a \in X
+		\\ g(a), & \text{if } a \in Y
+	\end{cases}
+	\]
+	Since $ X $ and $ Y $ are disjoint we know that $ h $ is well-defined since an element $ a \in X \cup Y $ must either be in $ X $ or in $ Y $, but not in both.
+	Let $ x \in X $ be arbitrary, we now show that $ (h \circ \iota_{X \to X \cup Y})(x) = f(x) $.
+	We have $ (h \circ \iota_{X \to X \cup Y})(x) = h(\iota_{X \to X \cup Y}(x)) = h(x) $, which equals $ f(x) $ from the definition of $ h $ and the fact that $ x \in X $.
+	In a similar manner we now let $ y \in Y $ be arbitrary, and obtain $ h(\iota_{Y \to X \cup Y}(y)) = h(y) $, which equals $ g(y) $ from the definition of $ h $, which shows that our function $ h $ has the desired properties.
+	
+	We now prove uniqueness.
+	Let $ h $ and $ h_{2} $ be functions satisfying the specified properties.
+	We must show that $ h $ and $ h_{2} $ must be equal.
+	Let $ a \in X \cup Y $, to show equality, we must show that $ h(a) = h_{2}(a) $.
+	For our first case we have $ a \in X $, and since $ X $ and $ Y $ are disjoint, we also know that $ a \notin Y $.
+	From our hypotheses we know that $ (h \circ \iota_{X \to X \cup Y})(a) = f(a) $ and thus $ h(a) = f(a) = h_{2}(a) $.
+	The second case is similar.
+	Thus we have shown that $ h(a) = h_{2}(a) $ for all $ a $, so $ h $ must be unique.
+\end{proof}
+
+\begin{exercise}{3.4.1}
+	Let $ V $ be a subset of $ Y $.
+	Prove that the forward image of $ V $ under $ f^{-1} $ is the same set as the inverse image of $ V $ under $ f $.
+\end{exercise}
+\begin{proof}
+	We wish to show $ f^{-1}(V) = f^{\circ}(V) $ where $ f^{\circ}(V) $ denotes the inverse image of $ V $ under $ f $.
+	Let $ x $ be an element of $ f^{-1}(V) = \{ f^{-1}(v) : v \in V \} $.
+	We need to show that $ x \in f^{\circ}(V) = \{ x \in X : f(x) \in V \} $.
+	Since $ f^{-1} $ is a function from $ Y $ to $ X $, $ f^{-1}(v) $ is an element of $ X $, so $ x \in X $.
+	We now need to show that $ f(x) \in V $.
+	However, from the definition of $ f^{-1}(V) $, we have $ x = f^{-1}(v) $, so $ f(x) = v $, which is an element of $ V $, again from the definition of $ f^{-1}(V) $.
+	Thus we have shown that if $ x \in f^{-1}(V) $ then $ x \in f^{\circ}(V) $.
+	
+	Now suppose that $ x \in f^{\circ}(V) = \{ x \in X : f(x) \in V \} $.
+	We need to show that $ x = f^{-1}(v) $ where $ v \in V $, but since $ f $.
+	However, we know that $ f(x) = v \in V $, and since $ f $ is bijective we also have $ x = f^{-1}(v) $.
+	Thus we have shown that if $ x \in f^{\circ}(V) $ then $ x \in f^{-1}(V) $, and consequently, $ f^{-1} = f^{\circ} $.
+\end{proof}
+
+\begin{exercise}{3.4.3}
+	Let $ A $, $ B $ be two subsets of a set $ X $, and let $ f : X \to Y $ be a function.
+	Show that $ f(A \cap B) \subseteq f(A) \cap f(B) $, that $ f(A) \setminus f(B) \subseteq f(A \setminus B) $, and that $ f(A \cup B) = f(A) \cup f(B) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in f(A \cap B) $.
+	We then know that $ x = f(c) $ for some $ c \in A \cap B $.
+	To show $ x \in f(A) $ is suffices to show $ x = f(a) $ for some $ a \in A $, and similarly for $ B $.
+	Since we have both $ c \in A $ and $ c \in B $, it follows that both $ x \in f(A) $ and also $ x \in f(B) $.
+	
+	Let $ x \in f(A) \setminus f(B) $.
+	This means that $ x \in f(A) $ and that $ x \notin f(B) $.
+	From this we know that $ x = f(a) $ for some $ a \in A $.
+	And also that $ x \neq f(b) $ for any $ b \in B $.
+	We know that $ x \in f(A \setminus B) \iff x = f(c) $ for some $ c \in A \setminus B $.
+	Let $ c = a $, then we immediately have $ c \in A $ and $ x = f(c) $.
+	Suppose $ c \in B $, then we would have $ x \neq f(c) $, a contradiction from above, so it must be the case that $ c \notin B $.
+	Thus we have shown that there exists a $ c \in A \setminus B $ such that $ x = f(c) $, which implies that $ x \in f(A \setminus B) $.
+	
+	Let $ x \in f(A \cup B) $.
+	This means that $ x = f(c) $ for some $ c \in A \cup B $.
+	Consider the first case where $ c \in A $.
+	Then we have $ x \in f(A) $, and consequently $ x \in f(A) \cup f(B) $.
+	The case where $ c \in B $ is similar.
+	Now suppose $ x \in f(A) \cup f(B) $.
+	This means that either $ x \in f(A) $ or $ x \in f(B) $, so we have two cases again.
+	If $ x \in f(A) $, then there exists a $ c \in A \cup B $ such that $ x = f(c) $, so $ x \in f(A \cup B) $.
+	Similar reasoning applies with $ x \in f(B) $.
+\end{proof}
+
+\begin{exercise}{3.4.4}
+	Show that $ f^{-1}(U \cap V) = f^{-1}(U) \cap f^{-1}(V) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in f^{-1}(U \cap V) $, then $ f(x) \in U \cap V $, so $ f(x) \in U $ and $ f(x) \in V $, from which we can obtain $ f^{-1}(U) \cap f^{-1}(V) $.
+	Now let $ x \in f^{-1}(U) \cap f^{-1}(V) $, then $ x \in f^{-1}(U) $ and $ x \in f^{-1}(V) $, so we have $ f(x) \in U $ and $ f(x) \in V $, which implies $ f(x) \in U \cap V $, and thus $ x \in f^{-1}(U \cap V) $.
+\end{proof}
+
+\begin{lemma}{A}
+	Let $ f : X \to Y $ be a function, then $ f^{-1}(Y) = X $.
+\end{lemma}
+\begin{proof}
+	We have $ f^{-1}(Y) = \{ x \in X : f(x) \in Y \} $.
+	Since from the definition of a function we have $ f(x) \in Y $ for every $ x \in X $, the result clearly holds.
+\end{proof}
+
+\begin{exercise}{3.4.5}
+	Let $ f : X \to Y $ be a function with $ S \subseteq Y $.
+	Show that $ f(f^{-1}(S)) = S \iff f $ is surjective.
+	Now let $ S \subseteq X $ and show that $ f^{-1}(f(S)) = S \iff f $ is injective.
+\end{exercise}
+\begin{proof}
+	Suppose $ f $ is surjective.
+	Let $ s $ be an element of $ f(f^{-1}(S)) $.
+	$ f(f^{-1}(S)) = \{ f(x) : x \in f^{-1}(S) \} $, so we know that $ s = f(x) $ where $ x \in f^{-1}(S) $.
+	We then know that $ f(x) \in S $, so $ s \in S $ as needed.
+	Now let $ s \in S $.
+	Then since $ f $ is surjective we know that there exists an $ x \in X $ such that $ s = f(x) $, with $ f(x) \in S $ because $ s \in S $.
+	Since $ x \in f^{-1}(S) $, we have $ s \in f(f^{-1}(S)) $ as needed.
+	
+	We now suppose $ f(f^{-1}(S)) = S $ for every $ S \subseteq Y $ and prove $ f $ is surjective.
+	Let $ y \in Y $ be arbitrary, we must show that there exists an $ x \in X $ such that $ f(x) = y $.
+	In the particular case where $ S = Y $ we know that $ f(f^{-1}(Y)) = Y $.
+	This means $ \{ f(x) : x \in f^{-1}(Y) \} = \{ y : y \in Y \} $, so we have $ y \in \{ f(x) : x \in f^{-1}(Y) \} $, which means $ y = f(x) $ where $ x \in f^{-1}(Y) $, and since $ X = f^{-1}(Y) $ from Lemma A, we have shown $ f $ is surjective.
+	
+	We now let $ S \subseteq X $ and suppose $ f $ is injective.
+	Let $ s $ be an element of $ f^{-1}(f(S)) $.
+	$ f^{-1}(f(S)) = \{ x \in X : f(x) \in f(S) \} $, so $ s \in X $ and $ f(s) \in f(S) $ which means $ \exists x \in S, f(x) = f(s) $.
+	Since $ f $ is injective we then have $ x = s $ and thus $ s \in S $ as desired.
+	Now let $ s \in S $.
+	Since $ s \in f^{-1}(f(S)) \iff f(s) \in f(S) \iff \exists x \in S, f(s) = f(x) $, and we have such an $ x $ (namely $ s $), this direction is done.
+	
+	We now suppose $ f^{-1}(f(S)) = S $ for every $ S \subseteq X $ and prove $ f $ is injective.
+	Let $ x_{1}, x_{2} \in X $ and suppose $ f(x_{1}) = f(x_{2}) $.
+	We must show that $ x_{1} = x_{2} $.
+	We know that $ \{ f(x_{1}) \} = \{ f(x_{2}) \} $, but then this is the definition of the image for the singleton sets, so $ f(\{ x_{1} \}) = f(\{ x_{2} \}) $.
+	In particular, from our assumption, taking $ S = \{ x_{1} \} $, we know that $ \{ x_{1} \} = f^{-1}(f(\{ x_{1} \})) = f^{-1}(f(\{ x_{2} \})) = \{ x_{2} \} $, so $ x_{1} $ = $ x_{2} $ as desired.
+\end{proof}
+
+\begin{lemma}{3.4.9}
+	Let $ X $ be a set.
+	Then the set $ \{ Y : Y \text{ is a subset of } X \} $ is a set.
+\end{lemma}
+
+\begin{exercise}{3.4.10}
+	Let $ I $ and $ J $ be two sets, and for all $ \alpha \in I \cup J $ let $ A_{\alpha} $ be a set.
+	Show that $ (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) = (\bigcup_{\alpha \in I \cup J} A_{\alpha}) $.
+	Now if $ I $ and $ J $ are non-empty then show $ (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) = (\bigcap_{\alpha \in I \cup J} A_{\alpha}) $.
+\end{exercise}
+\begin{proof}
+	Let $ y \in (\bigcup_{\alpha \in I} A_{\alpha}) \cup (\bigcup_{\alpha \in J} A_{\alpha}) $.
+	There are two cases where $ y $ is in each of the unioned sets.
+	For the first case we have, $ \exists \alpha \in I, y \in A_{\alpha} $.
+	We need to show that there exists an $ \alpha \in I \cup J $ such that $ y \in A_{\alpha} $, but clearly this is the case since we have an $ \alpha \in I $.
+	The second case is similar.
+	Now let $ y \in (\bigcup_{\alpha \in I \cup J} A_{\alpha}) $.
+	This means that there exists an $ \alpha \in I \cup J $ such that $ y \in A_{\alpha} $.
+	This means that $ \alpha $ is either in $ I $ or $ J $.
+	If $ \alpha \in I $ then we have $ y \in \bigcup_{\alpha \in I} A_{\alpha} $.
+	The remaining case and union is simple.
+	
+	Let $ y \in (\bigcap_{\alpha \in I} A_{\alpha}) \cap (\bigcap_{\alpha \in J} A_{\alpha}) $, so $ y \in (\bigcap_{\alpha \in I} A_{\alpha}) $ and $ y \in (\bigcap_{\alpha \in J} A_{\alpha}) $.
+	We need to show that $ y \in A_{\alpha} $ for all $ \alpha \in I \cup J $.
+	Let $ \alpha $ be an arbitrary element in $ I \cup J $, then we know that $ \alpha \in I $ or $ \alpha \in J $, so we have two cases.
+	We know that for every $ \alpha \in I $, $ y \in A_{\alpha} $, and similarly for every $ \alpha \in J $, so we have the desired conclusion.
+	Now let $ y \in (\bigcap_{\alpha \in I \cup J} A_{\alpha}) $.
+	Then for every $ \alpha \in I \cup J $ we have $ y \in A_{\alpha} $.
+	We need to show that for every $ \alpha \in I $, we have $ y \in A_{\alpha} $, so let $ \alpha $ be an arbitrary element in $ I $.
+	Since $ \alpha \in I $, then also $ \alpha \in I \cup J $, so we have $ y \in A_{\alpha} $, with the other case for $ J $ following similarly and providing the desired result.
+\end{proof}
+
+\begin{exercise}{3.5.4}
+	Show that $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in A \times (B \cup C) $, and so $ x = (a, d) $ for some $ a \in A $ and $ d \in B \cup C $.
+	There are now two cases, the first of which $ d \in B $.
+	In this case we have $ x = (a, b) $ for $ a \in A $ and $ b \in B $ so $ x \in A \times B $.
+	The other case is similar and these are all bidirectional so we have $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.	
+\end{proof}
+
+\begin{exercise}{3.5.5}
+	Show that $ (A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D) $.
+\end{exercise}
+\begin{proof}
+	Let $ x \in (A \times B) \cap (C \times D) $, then we have $ x \in A \times B $ and $ x \in C \times D $.
+	So $ x = (a, b) $.
+\end{proof}
+
+\end{document}
