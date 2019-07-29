@@ -140,6 +140,12 @@ end
 def d2_2_7 (n : ℕ) : Prop := n ≠ 0
 def pos := d2_2_7
 
+-- extra
+lemma zero_neq_one : pos 1 :=
+begin
+    
+end
+
 theorem p2_2_8 : ∀ a b, pos a → pos (a + b) :=
 begin
     intros a b pa,
